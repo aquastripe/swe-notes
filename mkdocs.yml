@@ -2,9 +2,12 @@ site_name: Software Engineering Notes
 
 theme:
   name: material
+  language: zh-TW
   custom_dir: overrides
   icon:
     repo: fontawesome/brands/github 
+  features:
+    - navigation.indexes
 
 markdown_extensions:
   - abbr
@@ -45,3 +48,6 @@ plugins:
 
 repo_url: https://github.com/aquastripe/swe-notes
 repo_name: aquastripe/swe-note
+
+nav:
+  - Patterns of Enterprise Application Architecture: "PoEAA/index.md"

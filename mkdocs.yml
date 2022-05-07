@@ -51,3 +51,5 @@ repo_name: aquastripe/swe-note
 
 nav:
   - Patterns of Enterprise Application Architecture: "PoEAA/index.md"
+
+copyright: Copyright &copy 2022 Hao-Ting Li. Content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.

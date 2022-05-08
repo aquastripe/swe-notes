@@ -3,7 +3,7 @@ site_name: 軟體工程學習筆記
 theme:
   name: material
   language: zh-TW
-  custom_dir: overrides
+  # custom_dir: overrides
   icon:
     repo: fontawesome/brands/github 
   features:

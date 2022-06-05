@@ -56,5 +56,6 @@ nav:
     - PoEAA/index.md
     - "敘述":
       - "分層": PoEAA/layering.md
+      - "組織領域邏輯": PoEAA/organizing-domain-logic.md
 
 copyright: Copyright &copy 2022 Hao-Ting Li. Content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.

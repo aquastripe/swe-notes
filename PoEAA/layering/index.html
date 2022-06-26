@@ -1,0 +1,646 @@
+
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+    
+    
+      
+        <title>分層 - 軟體工程學習筆記</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="軟體工程學習筆記" class="md-header__button md-logo" aria-label="軟體工程學習筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            軟體工程學習筆記
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              分層
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aquastripe/swe-notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aquastripe/swe-note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="軟體工程學習筆記" class="md-nav__button md-logo" aria-label="軟體工程學習筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    軟體工程學習筆記
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aquastripe/swe-notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aquastripe/swe-note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        Tags
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Martin Fowler: Patterns of Enterprise Application Architecture</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Martin Fowler: Patterns of Enterprise Application Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Martin Fowler: Patterns of Enterprise Application Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          敘述
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="敘述" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          敘述
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          分層
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        分層
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    分層的演進
+  </a>
+  
+    <nav class="md-nav" aria-label="分層的演進">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layertier" class="md-nav__link">
+    Layer/Tier 的誤用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三個主要分層
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    選擇分層的運作地點
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../organizing-domain-logic/" class="md-nav__link">
+        組織領域邏輯
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapping-to-relational-databases/" class="md-nav__link">
+        對應到關聯式資料庫
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    分層的演進
+  </a>
+  
+    <nav class="md-nav" aria-label="分層的演進">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layertier" class="md-nav__link">
+    Layer/Tier 的誤用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三個主要分層
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    選擇分層的運作地點
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/aquastripe/swe-notes/edit/master/docs/PoEAA/layering.md" title="編輯此頁" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  
+
+
+
+<h1 id="_1">分層<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>分層是軟體設計人員用來分解複雜系統的常用技術之一。例如：FTP 建構在 TCP 之上，TCP 建構在 IP 之上，IP 建構在乙太網路之上。以階層的角度來思考系統時，上層使用下層的各種服務，而下層對上層隱藏實作細節。</p>
+<p>將系統分層的優點是：</p>
+<ul>
+<li>不需要對其他階層有過多的了解，可以把單一階層當成一個連貫的整體來理解。</li>
+<li>可以在提供相同服務時，替換某個階層的實作。</li>
+<li>可以最小化階層之間的依賴關係。</li>
+<li>分層有利於標準化工作。</li>
+<li>建構好階層後，就可以用它來為更多更高層次的服務提供支援。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>分層能封裝一些東西，但不是所有東西。例如：如果需要在 UI 上面顯示一個新增欄位，那麼該欄位的值就必須被儲存在資料庫裡面；因此需要在 UI 到資料庫之間的所有階層加入這個欄位的資訊。</li>
+<li>過多的分層會減損效能。分層通常需要轉換資料表達形式。不過通常底層封裝的效益大於代價。</li>
+</ul>
+<p>分層架構最困難的是如何決定要建立哪些階層，還有每個階層的責任是什麼。</p>
+<h2 id="_2">分層的演進<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>早期：撰寫 ISAM、VSAM 形式的程式，不需要分層。</li>
+<li>用戶端/伺服器系統出現，分層的概念變得明顯。這時候分為兩層：用戶端包含使用者介面和其他應用程式碼，伺服器端通常是關聯式資料庫。常見的工具是 VB、Powerbuilder、Delphi。這些工具使得建置資料密集型的應用程式變得特別容易，因為這些 UI 元件具有理解 SQL 的能力。開發人員會把領域邏輯 (domain logic) 嵌入 UI 畫面中來完成工作，使得當領域邏輯越來越複雜時，程式碼也越來越難以使用。</li>
+<li>一種替代方案是將領域邏輯以預存程序　(stored procedure) 的方式存放在資料庫。然而，預存程序只提供了有限的資料結構，而且預存程序是資料庫供應商專有的，使得使用了預存程序以後將無法更換資料庫供應商。</li>
+<li>物件導向社群對於領域邏輯的解決方案是三層式系統：UI 展示層、領域邏輯的領域層、資料存取層。不過物件導向的浪潮並沒有取得太大的進展。雖然這種三層式的架構有很大的優點，不過如果系統很簡單時，用戶端/伺服器的架構還是比較有吸引力，但這個架構很難套用在三層式系統的設定上。</li>
+<li>Web 的興起帶來巨大的衝擊。人們突然想在 Web 瀏覽器上面部署這些用戶端/伺服器的應用程式。如果要將所有商業邏輯都埋在一個有豐富效果的用戶端上，則需要再 Web 介面重新開發所有商業邏輯。一個設計良好的三層式系統只需要加入一個新的展示層，然後用它來完成新的 Web 介面就好。Java 的出現也使得物件導向語言向當時的主流造成衝擊。用來建置 Web 頁面的工具和 SQL 之間的關聯也沒那麼高了，因此適合導入三層式架構。</li>
+</ol>
+<h3 id="layertier">Layer/Tier 的誤用<a class="headerlink" href="#layertier" title="Permanent link">&para;</a></h3>
+<p>Tier 指的是實體的分離，例如用戶端/伺服器的應用程式通常被稱為雙層系統 (two-tier system)。Layer 則是可以在同一台機器上面運作。</p>
+<h2 id="_3">三個主要分層<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>分層</th>
+<th>職責</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>展示層 (presentation)</td>
+<td>提供服務、顯示資訊</td>
+</tr>
+<tr>
+<td>領域邏輯層 (domain logic)</td>
+<td></td>
+</tr>
+<tr>
+<td>資料來源層 (data source)</td>
+<td>與其他系統通訊</td>
+</tr>
+</tbody>
+</table>
+<p>如果沒有使用者驅動軟體: 展示層和資料來源層有很多相似之處。例如： <a href="https://alistair.cockburn.us/hexagonal-architecture/">Alistair Cockburn 六角架構模式 (Hexagonal Architecture pattern)</a>，將任何系統都當作一個核心，而這個核心被外部系統包圍。這是一種對稱視角 (symmetrical view)，而非本書內的反對稱分層 (asymmetric layering scheme)。</p>
+<p><img alt="" src="https://alistair.cockburn.us/wp-content/uploads/2018/02/Hexagonal-architecture-basic-1.gif" /></p>
+<p>非對稱性的好處： <strong>向他人提供服務的介面</strong> 與 <strong>你使用他人服務的介面</strong> 有個很好的區別。</p>
+<ul>
+<li>展示層是系統為他人提供服務的外部介面，無論他人是人類或是簡單的系統</li>
+<li>資料來源層是為你提供服務的介面</li>
+</ul>
+<p>雖然可以為每個系統都如此分三層，不過如何分層還是要看系統的複雜性。</p>
+<ul>
+<li>最簡單的系統可能只是單檔程式，不過還是可以努力分離職責，比如分成三個子程序</li>
+<li>複雜度更高一些時，可以分離到類別</li>
+<li>在更複雜時，可以把類別分離成套件</li>
+</ul>
+<p>依賴關係的可靠性原則： <strong>領域邏輯層</strong> 和 <strong>資料來源層</strong> 不要依賴於 <strong>展示層</strong>。</p>
+<p>領域邏輯層的困難：難以分辨什麼是領域邏輯。一個非正式的測試方法：請想像對系統加入一個完全不同的分層。例如：</p>
+<ul>
+<li>為 Web 應用程式加入一個命令列介面，看看是否需要重複實作任何功能才能完成。</li>
+<li>是否需要重複實作某些邏輯，才能用 XML 檔案取代使用關聯式資料庫。</li>
+</ul>
+<p>作者對這個過於教條式的做法感到不安</p>
+<blockquote>
+<p>Alan Knight 在校稿時評論：「感到困惑的是，將領域邏輯放入 UI 中，究竟是走向災難的一步，還是一個合情合理的作法，只有純粹主義者 (dogmatic purist) 才會反對？」</p>
+</blockquote>
+<p>不安的原因是兩者皆是。</p>
+<h2 id="_4">選擇分層的運作地點<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>首先決定：應用程式在哪裡運作？客戶端、桌電、伺服器？</p>
+<ul>
+<li>在伺服器上運作所有服務，然後用瀏覽器存取。</li>
+<li>伺服器被侷限在一處，容易維護。</li>
+<li>不用擔心如何部署到多個客戶端、如何同步伺服器。</li>
+<li>相容性好。</li>
+<li>在用戶端運作：</li>
+<li>系統回應能力好。</li>
+<li>沒有網路情況下可以運作。</li>
+</ul>
+<p>接著就可以逐層分析：</p>
+<ul>
+<li>資料來源層：通常都在伺服器，例外狀況是需要離線作業時。</li>
+<li>展示層：是否需要豐富的 UI 效果？</li>
+<li>領域邏輯層：在客戶端或伺服器運作都可以。運作在伺服器上有助於維護，在客戶端上有助於回應能力。<ul>
+<li>在客戶端上運作：可以考慮運作所有邏輯，確保都在同個地方。問題：升級和維護成本很高。</li>
+<li>分散到客戶端和伺服器端上運作：很難知道邏輯放在哪個地方。解決辦法：將少量邏輯隔離在一個獨立的容器模組裡面，此模組不依賴任何系統。如此就能在客戶端或伺服器運作此模組。</li>
+</ul>
+</li>
+</ul>
+<p>除非不得已，不要分離分層並放到多個處理程序中執行，否則會降低效能又增加複雜性。以下許多因素都是 Jens Coldewey 所說的複雜性助推器 (complexity booster):</p>
+<ul>
+<li>分散式</li>
+<li>多執行緒</li>
+<li>典範鴻溝 (paradigm chasms)</li>
+<li>多平台開發</li>
+<li>高效能需求</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一頁: Patterns of Enterprise Application Architecture" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一頁
+              </span>
+              Patterns of Enterprise Application Architecture
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../organizing-domain-logic/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 組織領域邏輯" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一頁
+              </span>
+              組織領域邏輯
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy 2022 Hao-Ting Li. Content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e\uff1f\uff1b]+", "search.placeholder": "\u641c\u5c0b", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.0238f547.min.js"></script>
+      
+    
+  </body>
+</html>
